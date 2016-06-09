@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jstree</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.3.1/themes/default/style.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.3.1/jstree.min.js"></script>
+</head>
+<body>
+
+  <div style="width:100px">
+    <div id="myTree"></div>
+  </div>
+
+  <script type="text/javascript">
+    var data = [
+       { "id" : "root", "parent" : "#", "text" : "RootRootRootRootRootRootRootRootRootRootRootRootRootRootRootRootRootRoot" },
+       { "id" : "cat1", "parent" : "root", "text" : "First Branch RootRootRootRootRootRootRootRootRootRootRootRootRootRootRootRootRootRootRootRootRootRootRootRootRootRootRootRootRootRootRootRootRootRootRootRoot" },
+       { "id" : "cat01", "parent" : "cat1", "text" : "Cat 0.1" },
+       { "id" : "cat02", "parent" : "cat1", "text" : "Cat 0.2" },
+       { "id" : "cat03", "parent" : "cat1", "text" : "Cat 0.3" },
+       { "id" : "cat011", "parent" : "cat01", "text" : "Cat 0.1.1" },
+       { "id" : "cat012", "parent" : "cat01", "text" : "Cat 0.1.2" },
+       { "id" : "cat013", "parent" : "cat01", "text" : "Cat 0.1.3" }
+    ];
+
+  // set lastOpenedNode.value here
+    var lastOpenedNode = {
+      value: 'cat1'
+    }
+
+  $('#myTree')
+       .on('ready.jstree', function () {
+            $("#myTree").jstree()._open_to( lastOpenedNode.value );
+      })
+      .jstree({
+          "core": {
+              "data": data,
+              "themes": {
+                  'name': 'default',
+                  "variant": "small",
+                  "icons": false
+              },
+          },
+          "plugins": ["types"]
+   });
+</script>
+
+</body>
+</html>
+
